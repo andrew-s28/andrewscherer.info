@@ -1,0 +1,33 @@
+{% for message in messages %}
+    <p>{{ message }}</p>
+{% endfor %}
+{% if form.errors %}
+<div class="alert alert-danger">
+  <ul>
+    {% for field in form %}
+        {% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+{% for field in form %}
+  {% if field.label == "" %}
+    <div class="fieldWrapper" style="display: none;">
+      <div class="text-body-light fs-5 pb-2">
+        {{ field.label_tag }} {{ field }}
+      </div>
+    </div>
+  {% elif field.label == "comments" %}
+    <div id="comments">
+      <div class="text-body-light fs-5 pb-2">
+        {{ field.label_tag }} {{ field }}
+      </div>
+    </div>
+  {% else %}
+    <div class="fieldWrapper">
+      <div class="text-body-light fs-5 pb-2">
+        {{ field.label_tag }} {{ field }}
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}

@@ -1,0 +1,51 @@
+# Ignore database files
+*.sqlite3
+
+# Ignore static files
+static/
+
+# Ignore media files
+media/
+
+# Ignore environment variables
+*.env
+
+# Ignore compiled Python files
+*.pyc
+__pycache__/
+
+# Ignore local development settings
+/local_settings.py
+
+# Ignore IDE and editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore logs
+/logs/
+
+# Ignore virtual environment
+/venv/
+
+# Ignore deployment files
+/deploy/
+
+# Ignore sensitive information
+*.secret
+
+# ignore backup files
+*.backup
+
+# Ignore Nginx config
+nginx/
+
+# Ignore certbot
+certbot/
+
+# Ignore Docker
+postgres_data/
+
+# Ignore Docker Compose
+docker-compose.yml

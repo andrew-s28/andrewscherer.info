@@ -1,0 +1,144 @@
+{% extends "layout/_base.html" %}
+{% block title %}
+  Blog
+{% endblock %}
+{% block content %}
+<div class="px-3 py-5 mb-4 bg-body-tertiary banner-img-subpage" id="page_title">
+  <div class="container-md">
+    <div class="row">
+      <div class="col text-center">
+        <h1 class="display-5 fw-bold text-dark">Blog</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-lg py-3 px-4">
+  <div class="row pb-4">
+    <div class= "col-sm-12">
+      {% block current_page %}{% endblock %}
+    </div>
+    {% for blog in blogs %}
+      {% if blog.image.url is not None %}
+        <div class="col-sm-4 align-content-center pb-3">
+          <div class="rounded-3 mx-auto" id="thumbnail">
+            <a href="{% url 'blog:article' blog.slug %}">
+              <img src="{{ blog.image.url }}" class="img-fluid" alt="{{ blog.title }}">
+            </a>
+          </div>
+        </div>
+        <div class="col-sm-8 pb-3 my-auto">
+          <a class="link-body-emphasis link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{% url 'blog:article' blog.slug %}">
+            <h2>{{ blog.title|title }}</h2>
+          </a>
+          <p>
+            <a class="link-body-emphasis link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{% url 'blog:date' blog.date_slug %}">{{ blog.date_formatted|upper }}</a>
+            {% if blog.tags.all|length > 0 %}
+              {% for tag in blog.tags.all %}
+                &nbsp;|&nbsp;
+                <a class="link-body-emphasis link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{% url 'blog:tag' tag.slug %}">{{ tag.name|upper }}</a>
+              {% endfor %}
+              <br>
+            {% endif %}
+            <a class="link-body-emphasis link-body-emphasis-hover link-underline-opacity-0" href="{% url 'blog:article' blog.slug %}">
+              {{ blog.body|striptags|truncatewords:25 }}
+            </a>
+          </p>
+        </div>
+      {% else %}
+        <div class="col-sm-4 pb-3">
+          <a href="{% url 'blog:article' blog.slug %}"><p></p></a>
+        </div>
+        <div class="col-sm-8 pb-3">
+          <div class="pb-2">
+            <a class="link-body-emphasis link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{% url 'blog:article' blog.slug %}">
+              <h2>{{ blog.title|title }}</h2>
+            </a>
+            <p>
+              <a class="link-body-emphasis link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{% url 'blog:date' blog.date_slug %}">{{ blog.date_formatted|upper }}</a>
+              {% if blog.tags.all|length > 0 %}
+                {% for tag in blog.tags.all %}
+                  &nbsp;|&nbsp;
+                  <a class="link-body-emphasis link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{% url 'blog:tag' tag.slug %}">{{ tag.name|upper }}</a>
+                {% endfor %}
+                <br>
+              {% endif %}
+              <a class="link-body-emphasis link-body-emphasis-hover link-underline-opacity-0" href="{% url 'blog:article' blog.slug %}">
+                {{ blog.body|striptags|truncatewords:25 }}
+              </a>
+            </p>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+<div class="container-md py-3 px-5">
+  <div class="row pb-4">
+    <div class="col-sm-6">
+      <strong class="d-block h6 pb-2 border-bottom">Recent Posts</strong>
+      <ul class="list-unstyled">
+        {% for blog in recent_posts %}
+          <li>
+            <a class="link-body-emphasis link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{% url 'blog:article' blog.slug %}">{{ blog.title|title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col-sm-6 text-end">
+      <strong class="d-block h6 pb-2 border-bottom">Popular Tags</strong>
+      <ul class="list-unstyled">
+        {% for tag in popular_tags %}
+          <li>
+            <a class="link-body-emphasis link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{% url 'blog:tag' tag.slug %}">{{ tag.name|title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="pagination justify-content-center">
+  <span class="step-links">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only"></span>
+            </a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only"></span>
+            </a>
+          </li>
+        {% endif %}
+        {% for page_number in page_obj.paginator.page_range %}
+          {% if page_obj.number == page_number %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a></li>
+          {% elif page_number > page_obj.number|add:'-3' and page_number < page_obj.number|add:'3' %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a></li>
+          {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only"></span>
+            </a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only"></span>
+            </a>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+  </span>
+</div>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends "layout/_base.html" %}
+{% load markdown %}
+{% load static %}
+{% block title %}
+  My Work
+{% endblock %}
+{% block content %}
+<div class="px-3 py-5 mb-4 bg-body-tertiary banner-img-subpage" id="page_title">
+  <div class="container-xxl">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1 class="display-5 fw-bold text-dark">My Work</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-lg px-4">
+  <div class="row align-items-center justify-content-center pb-3">
+    <div class="col-12 order-2 order-md-1">
+      <h2 class="fw-bold">Research</h2>
+    </div>
+    {% if research.image.url is not None %}
+      <div class="col-md-3 align-items-center justify-content-center bio-img order-1 order-md-3 py-3">
+        <div class="text-center d-flex justify-content-center">
+          <img src="{{ research.image.url }}" class="float-sm-end rounded-3 p-0 aboutme-img" alt="An image of an ocean profiler looking back on the Oregon coast from the back of a boat">
+        </div>
+      </div>
+      <div class="col-md align-items-center justify-content-center bio-img order-3 order-md-2 text-body-light fs-5">
+          {{ research.description|convert_markdown|safe }}
+      </div>
+    {% else %}
+      <div class="col-12 text-body-light fs-5">
+        {{ research.description|convert_markdown|safe }}
+      </div>
+    {% endif %}
+  </div>
+  <div class="row justify-content-left pb-3">
+    <div class="col-12">
+      <h2 class="fw-bold">Publications</h2>
+    </div>
+    <div class="col-12 text-body-light fs-5">
+      {{ publications.description|convert_markdown|safe }}
+    </div>
+  </div>
+  <div class="row justify-content-left pb-3">
+    <div class="col-12">
+      <h2 class="fw-bold">Presentations</h2>
+    </div>
+    <div class="col-12 text-body-light fs-5">
+      {{ presentations.description|convert_markdown|safe }}
+    </div>
+  </div>
+  <div class="row justify-content-left pb-3">
+    <div class="col-12">
+      <h2 class="fw-bold">Teaching</h2>
+    </div>
+    <div class="col-12 text-body-light fs-5">
+      {{ teaching.description|convert_markdown|safe }}
+    </div>
+  </div>
+  <div class="row justify-content-center pb-3">
+    <div class="col-12 pb-3">
+      <h2 class="fw-bold">Curriculum Vitae</h2>
+    </div>
+    <div class="col-12 text-center pb-3">
+      {% if cv.cv.url is not None %}
+          <iframe src="{{ cv.cv.url }}" style="height: 1000px; width: 80%" frameborder="0"></iframe>
+          <p class="pt-3">If the PDF viewer is not loading, you can <a href="{{ cv.cv.url }}">download my CV here</a>.</p>
+      {% else %}
+            <p>An error has occured in loading the PDF.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

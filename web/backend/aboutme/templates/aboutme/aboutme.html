@@ -1,0 +1,42 @@
+{% extends "layout/_base.html" %}
+{% load markdown %}
+{% load static %}
+{% block title %}
+    About Me
+{% endblock %}
+{% block content %}
+<div class="px-3 py-5 mb-4 bg-body-tertiary banner-img-subpage" id="page_title">
+  <div class="container-xl">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1 class="display-5 fw-bold text-dark">About Me</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-lg px-4">
+  <div class="row align-items-center justify-content-center">
+    {% if aboutme.image.url is not None %}
+      {% comment %} <div class="col-lg-3 p-3">
+        <img src="{{ aboutme.image.url }}" class="float-start rounded-3 aboutme-img" alt="A picture of me">
+      </div> {% endcomment %}
+        <div class="col-lg-3 align-items-center justify-content-center bio-img">
+          <div class="text-center d-flex justify-content-center pb-3">
+            <img src="{{ aboutme.image.url }}" class="float-sm-start rounded-3 aboutme-img" alt="A picture of me">
+          </div>
+        </div>
+      <div class="col-lg text-body-light fs-5">
+        {% comment %} <img src="{{ aboutme.image.url }}" class="float-sm-start rounded-3 px-1 py-0 aboutme-img" alt="A picture of me"> {% endcomment %}
+        {{ aboutme.body|convert_markdown|safe }}
+      </div>
+      </div>
+    {% else %}
+      <div class="col-lg text-body-light fs-5">
+        {{ aboutme.body|convert_markdown|safe }}
+      </div>
+    {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

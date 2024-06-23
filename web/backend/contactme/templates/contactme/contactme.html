@@ -1,0 +1,33 @@
+{% extends "layout/_base.html" %}
+{% load static %}
+{% block title %}
+  Contact Me
+{% endblock %}
+{% block content %}
+<div class="px-3 py-5 mb-4 bg-body-tertiary banner-img-subpage" id="page_title">
+  <div class="container-lg">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1 class="display-5 fw-bold text-dark">Contact Me</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-lg px-4">
+  <div class="row align-items-center justify-content-center">
+    <div class="col-12 text-center">
+      <p class="text-body-light fs-5">Please fill out the form below and I will get back to you as soon as possible.</p>
+    </div>
+    <div class="col-12">
+      <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <div class="form-actions pt-3 col-12">
+          <button class="btn btn-secondary col-12" type="submit">Send</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
