@@ -31,7 +31,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          fingerprint: ${{ secrets.SSH_FINGERPRINT }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: |
             docker-compose -f web/docker-compose.yml down
             docker-compose -f web/docker-compose.yml pull
