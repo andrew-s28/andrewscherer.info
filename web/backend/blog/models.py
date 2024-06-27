@@ -1,6 +1,8 @@
 from django.db import models
 from django_extensions.db.fields import AutoSlugField
 from django.utils.timezone import now
+from django.utils import timezone
+import zoneinfo
 from django.db.models.signals import post_delete
 from django.dispatch.dispatcher import receiver
 
@@ -25,11 +27,13 @@ class BlogPost(models.Model):
 
     @property
     def date_formatted(self):
-        return self.pub_date.strftime('%B %d, %Y')
+        timezone.activate(zoneinfo.ZoneInfo('America/Los_Angeles'))
+        return self.pub_date.astimezone(timezone.get_current_timezone()).strftime('%B %d, %Y')
 
     @property
     def date_slug(self):
-        return self.pub_date.strftime('%Y-%m')
+        timezone.activate(zoneinfo.ZoneInfo('America/Los_Angeles'))
+        return self.pub_date.astimezone(timezone.get_current_timezone()).strftime('%Y-%m')
 
 
 class UploadedImages(models.Model):
