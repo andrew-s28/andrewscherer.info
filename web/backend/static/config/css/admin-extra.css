@@ -1,0 +1,16 @@
+.jconfirm-box {
+    color: #e9ecef !important;
+  }
+  .jconfirm-box {
+    background-color: #343a40 !important;
+  }
+  .jconfirm .jconfirm-box .jconfirm-type-orange {
+    border-top: transparent !important;
+    -webkit-animation-name:type-orange;
+    animation-name:type-orange;
+  }
+  /* #container > .main {
+    display: flex;
+    flex: 1 0 auto;
+    align-self: center !important;
+  } */

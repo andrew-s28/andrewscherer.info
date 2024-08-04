@@ -29,6 +29,8 @@ RUN mkdir $APP_HOME/staticfiles
 RUN mkdir $APP_HOME/mediafiles
 WORKDIR $APP_HOME
 
+COPY ./static ./staticfiles
+
 RUN apt-get update && apt-get install -y --no-install-recommends netcat-traditional
 COPY --from=builder /usr/src/app/wheels /wheels
 COPY --from=builder /usr/src/app/requirements.txt .
