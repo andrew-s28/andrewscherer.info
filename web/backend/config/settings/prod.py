@@ -166,7 +166,10 @@ MEDIA_ROOT = os.getenv('MEDIA_ROOT')
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-CSRF_TRUSTED_ORIGINS = ["https://andrewscherer.info"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://andrewscherer.info",
+    "https://sourcedepth.com",
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
