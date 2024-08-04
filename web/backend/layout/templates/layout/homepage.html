@@ -1,50 +1,60 @@
 {% extends "layout/_base.html" %}
 {% load static %}
 {% block content %}
-<div class="container-fluid bg-body-tertiary">
-  <div class="container-xl px-3">
-    <div class="col-12 p-5 mb-4 text-center">
-        <h1 class="display-5 fw-bold text-center">Welcome to my site!</h1>
-        <h2 class="fs-4 text-center">I like to keep things simple - check out my site links below.</h2>
-        <h2 class="fs-4 text-center">I hope you find something here that you enjoy!</h2>
-    </div>
-  </div>
+<div id="homepage-background">
+  <img src="{% static 'layout/images/homepage_background.svg' %}" width="100%" height="auto">
 </div>
-<div class="container-xl px-3">
-  <div class="row">
-      <div class="col-md-6 col-xl-3 p-3 nav-box">
-        <a class="link-body-emphasis link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/blog/">
-          <div class="h-100 p-3 bg-body-tertiary border rounded-3">
-            <h2 class="text-center"><img class="bi bd-image" src="{% static 'layout/images/pen-fill-dark.svg' %}" alt="A pen, a symbol for the link to my blog" height="40"/></h2>
-            <h2 class="text-center">Blog</h2>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-6 col-xl-3 p-3 nav-box">
-        <a class="link-body-emphasis link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/career/">
-          <div class="h-100 p-3 bg-body-tertiary border rounded-3">
-            <h2 class="text-center"><img class="bi bd-image" src="{% static 'layout/images/briefcase-fill-dark.svg' %}" alt="A briefcase, a symbol for the link to my work page" height="40"/></h2>
-            <h2 class="text-center">My Work</h2>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-6 col-xl-3 p-3 nav-box">
-        <a class="link-body-emphasis link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/aboutme/">
-          <div class="h-100 p-3 bg-body-tertiary border rounded-3">
-            <h2 class="text-center"><img class="bi bd-image" src="{% static 'layout/images/person-fill-dark.svg' %}" alt="A person outline, a symbol for the link to my about me page" height="40"/></h2>
-            <h2 class="text-center">About Me</h2>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-6 col-xl-3 p-3 nav-box">
-        <a class="link-body-emphasis link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/contactme/">
-          <div class="h-100 p-3 bg-body-tertiary border rounded-3">
-            <h2 class="text-center"><img class="bi bd-image" src="{% static 'layout/images/envelope-fill-dark.svg' %}" alt="An envelope, a symbol for the link to my contact page" height="40"/></h2>
-            <h2 class="text-center">Contact Me</h2>
-          </div>
-        </a>
+<div id="homepage-content">
+  <div class="container-fluid">
+    <div class="container-xl px-3">
+      <div class="col-12 p-5 mb-4 text-center">
+        <h1 class="display-5 fw-bold text-center text-white">
+          The source depth refers to the depth that upwelled water originates from.
+        </h1>
+        <h2 class="fs-4 text-center text-white">
+          This depth is important for setting the water properties, such as temperature and salinity, and the nutrients that are available to the surface ocean.
+          Similarly, this site hopes to be a source of information and resources for you to explore within the world of oceanography and beyond.
+          I hope you find something here that you enjoy!
+        </h2>
       </div>
     </div>
   </div>
-</div>  
+  <div class="container-xl px-3">
+    <div class="row">
+        <div class="col-md-6 col-xl-3 p-3 nav-box">
+          <a class="link-body-emphasis link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/blog/">
+            <div class="h-100 p-3 bg-body-tertiary border rounded-3">
+              <h2 class="text-center"><img class="bi bd-image" src="{% static 'layout/images/pen-fill-dark.svg' %}" alt="A pen, a symbol for the link to my blog" height="40"/></h2>
+              <h2 class="text-center">Blog</h2>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6 col-xl-3 p-3 nav-box">
+          <a class="link-body-emphasis link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/career/">
+            <div class="h-100 p-3 bg-body-tertiary border rounded-3">
+              <h2 class="text-center"><img class="bi bd-image" src="{% static 'layout/images/briefcase-fill-dark.svg' %}" alt="A briefcase, a symbol for the link to my work page" height="40"/></h2>
+              <h2 class="text-center">My Work</h2>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6 col-xl-3 p-3 nav-box">
+          <a class="link-body-emphasis link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/aboutme/">
+            <div class="h-100 p-3 bg-body-tertiary border rounded-3">
+              <h2 class="text-center"><img class="bi bd-image" src="{% static 'layout/images/person-fill-dark.svg' %}" alt="A person outline, a symbol for the link to my about me page" height="40"/></h2>
+              <h2 class="text-center">About Me</h2>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6 col-xl-3 p-3 nav-box">
+          <a class="link-body-emphasis link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/contactme/">
+            <div class="h-100 p-3 bg-body-tertiary border rounded-3">
+              <h2 class="text-center"><img class="bi bd-image" src="{% static 'layout/images/envelope-fill-dark.svg' %}" alt="An envelope, a symbol for the link to my contact page" height="40"/></h2>
+              <h2 class="text-center">Contact Me</h2>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>
 {% endblock %}

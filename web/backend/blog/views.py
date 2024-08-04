@@ -1,6 +1,5 @@
 from datetime import datetime
 import os
-from uuid import uuid4
 
 from dotenv import load_dotenv, find_dotenv
 from django.conf import settings
@@ -122,7 +121,7 @@ def upload_image(request):
 
     if not os.path.exists(file_path):
         os.makedirs(file_path)
-    file_name = str(uuid4())
+    file_name = file.name.split('.')[0]
     file_path = os.path.join(file_path, file_name + '.' + file_suffix)
     file_url = settings.MEDIA_URL + 'tinymce/' + os.path.basename(file_name + '.' + file_suffix)
     if os.path.exists(file_path):

@@ -1,8 +1,16 @@
 # Ignore database files
 *.sqlite3
 
-# Ignore static files
-static/
+# Ignore static files from third parties
+bootstrap*/
+CACHE/
+debug_toolbar/
+admin/
+tinymce/
+django_tinymce/
+django_extensions/
+two_step_assets/
+web/backend/static/
 
 # Ignore media files
 media/
