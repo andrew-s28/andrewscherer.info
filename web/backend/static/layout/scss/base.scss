@@ -23,7 +23,7 @@
     text-align: center;
   }
   .nav-link-page {
-    width: 100px;
+    width: 160px;
     padding: 0;
     line-height: var(--navbar-height);
     text-align: center;
@@ -73,6 +73,9 @@
     max-height: 150px;
   }
 }
+// .homepage-links {
+//   background-color: #064273;
+// }
 #content {
   overflow: clip;
 }
@@ -161,4 +164,39 @@
 }
 #comments {
   display: none;
+}
+.row-link {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.row-link-div {
+  background-color: rgba(0, 0, 0, 0);
+}
+.row-link-div:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.link-div {
+  align-content: center;
+}
+.fish-div {
+  transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -webkit-transition:all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+}
+.fish-div-right {
+  transform: scaleX(-1);
+}
+@media (min-width: 800px){
+  .row-link-div:hover > .fish-div-left {
+    transform: translateX(50%);
+  }
+  .row-link-div:hover > .fish-div-right {
+    transform: translateX(-50%) scaleX(-1);
+  }
+}
+.homepage-bottom-padding {
+  padding-bottom: 50px;
 }

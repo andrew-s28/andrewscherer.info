@@ -28,7 +28,7 @@
 
   <body>
   <header class="navbar sticky-top bg-body-tertiary navbar-expand-lg bd-navbar p-0" id="navbar">
-    <nav class="container-xxl p-0">
+    <nav class="container-xxl px-5 py-0 h-100">
       <a href="/" class="navbar-brand align-self-center ps-3">
         <img class="bi me-2 bd-image" src="{% static 'layout/images/house-dark.svg' %}" alt="Home" height="30"/>
         <span class="visually-hidden">Home</span>
@@ -40,16 +40,16 @@
       <div id="regularnavbar", class="navbar-collapse", tabindex="-1", data-bs-scroll="true">
         <ul class="navbar-nav me-auto order-0 flex">
           <li class="nav-item nav-page" id="blog">
-            <a class="nav-link nav-link-page" href="/blog/">Blog</a>
+            <a class="nav-link nav-link-page fs-4" href="/blog/">Blog</a>
           </li>
           <li class="nav-item nav-page" id="career">
-            <a class="nav-link nav-link-page" href="/career/">My Work</a>
+            <a class="nav-link nav-link-page fs-4" href="/career/">My Work</a>
           </li>
           <li class="nav-item nav-page" id="aboutme">
-            <a class="nav-link nav-link-page" href="/aboutme/">About Me</a>
+            <a class="nav-link nav-link-page fs-4" href="/aboutme/">About Me</a>
           </li>
           <li class="nav-item nav-page" id="contactme">
-            <a class="nav-link nav-link-page" href="/contactme/">Contact Me</a>
+            <a class="nav-link nav-link-page fs-4" href="/contactme/">Contact Me</a>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto order-2">
@@ -128,11 +128,6 @@
             </a>
           </li>
         </ul>
-        {% comment %} <form class="navbar-form order-1 pb-3 px-5" id="search" role="search">
-          <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
-          </div>
-        </form> {% endcomment %}
       </div>
       <ul class="navbar-nav px-3 order-3" id="collapsednavbartheme">
         <li class="nav-item">
@@ -141,7 +136,7 @@
               <img class="bi my-1 theme-icon-active bd-image-theme" src="{% static 'layout/images/moon-stars-fill-dark.svg' %}" alt="Dark Mode" height="18"/>
               <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
             </button>
-            <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text" style="">
+            <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
               <li>
                 <button type="button" class="dropdown-item d-flex align-items-left align-items-center" data-bs-theme-value="light" aria-pressed="false">
                   <img id="bd-image" class="bi me-2 bd-image-theme-dropdown" src="{% static 'layout/images/sun-fill-dark.svg' %}" alt="Light Mode" height="18"/>
