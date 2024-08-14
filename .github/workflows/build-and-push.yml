@@ -34,6 +34,7 @@ jobs:
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: |
             docker compose -f web/docker-compose.yml down
+            docker volume rm web_static_volume
             docker compose -f web/docker-compose.yml pull
             docker compose -f web/docker-compose.yml up -d --build
 
