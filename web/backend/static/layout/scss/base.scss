@@ -72,6 +72,10 @@
   #thumbnail {
     max-height: 150px;
   }
+  .navbar-nav hr {
+    margin: 0;
+    width: 200px;
+  }
 }
 // .homepage-links {
 //   background-color: #064273;
@@ -173,6 +177,7 @@
 }
 .row-link-div {
   background-color: rgba(0, 0, 0, 0);
+  height: 100px;
 }
 .row-link-div:hover {
   background-color: rgba(0, 0, 0, 0.1);
