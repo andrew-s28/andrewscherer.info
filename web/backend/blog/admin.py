@@ -15,7 +15,7 @@ class BlogAdmin(admin.ModelAdmin):
 
     fieldsets = (
         (None, {
-            'fields': ('title', 'pub_date', 'tags', 'body', 'image',)
+            'fields': ('title', 'pub_date', 'tags', 'body', 'image', 'visible')
         }),
     )
 

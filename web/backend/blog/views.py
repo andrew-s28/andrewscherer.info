@@ -4,6 +4,7 @@ import os
 from dotenv import load_dotenv, find_dotenv
 from django.conf import settings
 from django.contrib.auth.decorators import user_passes_test
+from django.db.models import Count
 from django.http import JsonResponse
 from django.utils import timezone
 from django.views import generic
@@ -28,14 +29,14 @@ class BlogView(generic.ListView):
     def get_queryset(self):
         return BlogPost.objects.filter(
             pub_date__lte=timezone.now()
+        ).filter(
+            visible=True
         ).order_by('-pub_date')
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['recent_posts'] = BlogPost.objects.filter(
-            pub_date__lte=timezone.now()
-            ).order_by('-pub_date')[:5]
-        context['popular_tags'] = BlogPost.tags.most_common()[:5]
+        context['recent_posts'] = get_recent_posts(BlogPost)
+        context['popular_tags'] = get_popular_tags(BlogPost)
         return context
 
 
@@ -51,14 +52,14 @@ class DateView(generic.ListView):
             pub_date__year=year, pub_date__month=month
         ).filter(
             pub_date__lte=timezone.now()
+        ).filter(
+            visible=True
         ).order_by('-pub_date')
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['recent_posts'] = BlogPost.objects.filter(
-            pub_date__lte=timezone.now()
-            ).order_by('-pub_date')[:5]
-        context['popular_tags'] = BlogPost.tags.most_common()[:5]
+        context['recent_posts'] = get_recent_posts(BlogPost)
+        context['popular_tags'] = get_popular_tags(BlogPost)
         current_date = datetime.strptime(self.kwargs['date'], '%Y-%m')
         context['current_date'] = current_date.strftime('%B %Y')
         return context
@@ -75,14 +76,14 @@ class TagView(generic.ListView):
             tags__name=self.kwargs['tag']
         ).filter(
             pub_date__lte=timezone.now()
+        ).filter(
+            visible=True
         ).order_by('-pub_date')
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['recent_posts'] = BlogPost.objects.filter(
-            pub_date__lte=timezone.now()
-            ).order_by('-pub_date')[:5]
-        context['popular_tags'] = BlogPost.tags.most_common()[:5]
+        context['recent_posts'] = get_recent_posts(BlogPost)
+        context['popular_tags'] = get_popular_tags(BlogPost)
         context['current_tag'] = self.kwargs['tag']
         return context
 
@@ -93,17 +94,33 @@ class ArticleView(generic.DetailView):
     context_object_name = 'article'
 
     def get_queryset(self):
-        return BlogPost.objects.filter(pub_date__lte=timezone.now())
+        return BlogPost.objects.filter(
+            pub_date__lte=timezone.now()
+        ).filter(
+            visible=True
+        ).order_by('-pub_date')
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['recent_posts'] = BlogPost.objects.filter(
-            pub_date__lte=timezone.now()
-            ).order_by('-pub_date')[:5]
-        context['popular_tags'] = BlogPost.tags.most_common()[:5]
+        context['recent_posts'] = get_recent_posts(BlogPost)
+        context['popular_tags'] = get_popular_tags(BlogPost)
         if context['object'].title == 'Pollen Tracker':
             context['script'], context['div'] = allergen_plot()
         return context
+
+
+def get_popular_tags(BlogPost: BlogPost):
+    return BlogPost.tags.most_common().filter(
+        id__in=BlogPost.objects.filter(pub_date__lte=timezone.now()).filter(visible=True).order_by('-pub_date').values('tags')
+    )[:5]
+
+
+def get_recent_posts(BlogPost: BlogPost):
+    return BlogPost.objects.filter(
+        pub_date__lte=timezone.now()
+    ).filter(
+        visible=True
+    ).order_by('-pub_date')[:5]
 
 
 @csrf_exempt

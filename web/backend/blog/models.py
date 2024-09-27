@@ -21,6 +21,7 @@ class BlogPost(models.Model):
     alt_text = models.CharField(max_length=200, blank=True)
     slug = AutoSlugField(populate_from=('title',), unique=True, max_length=50)
     tags = TaggableManager(blank=True)
+    visible = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
