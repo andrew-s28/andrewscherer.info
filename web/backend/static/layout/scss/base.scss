@@ -23,7 +23,7 @@
     text-align: center;
   }
   .nav-link-page {
-    width: 160px;
+    width: 120px;
     padding: 0;
     line-height: var(--navbar-height);
     text-align: center;
@@ -55,7 +55,10 @@
     z-index: 1100;
   }
 }
-@media (max-width: 992px) {
+@media (max-width: 991px) {
+  #collapsednavbar {
+    width: 100vw;
+  }
   #regularnavbar {
     display: none !important;
   }
@@ -65,6 +68,9 @@
   }
   .nav-link {
     text-align: center;
+  }
+  .nav-page {
+    width: 200px;
   }
   .navbar {
     height: var(--navbar-height);
@@ -77,15 +83,8 @@
     width: 200px;
   }
 }
-// .homepage-links {
-//   background-color: #064273;
-// }
 #content {
   overflow: clip;
-}
-#homepage-content {
-  margin-top: -55%;
-  background-color: #064273;
 }
 .banner-img {
   background: url('../images/banner.jpg') center;
@@ -177,7 +176,13 @@
 }
 .row-link-div {
   background-color: rgba(0, 0, 0, 0);
-  height: 100px;
+  z-index: 1;
+}
+.row-link-divider img {
+  width: 100%;
+  height: auto;
+  margin-top: -45%;
+  margin-bottom: -45%;
 }
 .row-link-div:hover {
   background-color: rgba(0, 0, 0, 0.1);
@@ -194,7 +199,7 @@
 .fish-div-right {
   transform: scaleX(-1);
 }
-@media (min-width: 800px){
+@media (min-width: 700px){
   .row-link-div:hover > .fish-div-left {
     transform: translateX(50%);
   }
@@ -204,4 +209,43 @@
 }
 .homepage-bottom-padding {
   padding-bottom: 50px;
+}
+#homepage-background-wide {
+  visibility:visible;
+  display:block;
+  position:relative;
+  width:10000px;
+  margin-left:50%;
+  transform:translateX(-50%)
+}
+#homepage-background {
+  visibility:hidden;
+  display: none;
+}
+#homepage-content {
+  position:relative;
+  margin-top:-360px;
+}
+@media (max-width:700px) {
+  #homepage-background {
+    visibility:visible;
+    display:block;
+    position:relative;
+    height: 560px;
+  }
+  #homepage-background img {
+    width:calc(calc(0.80*100vw) + 140px);
+    margin-left:50%;
+    transform:translateX(-50%);
+  }
+  #homepage-background-wide {
+    visibility:hidden;
+    display: none;
+  }
+  #homepage-content {
+    margin-top: calc(15/76*100vw - 9465px/19);
+  }
+}
+#content {
+  background-color:#064273
 }
