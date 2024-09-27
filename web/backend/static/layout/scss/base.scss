@@ -177,6 +177,8 @@
 .row-link-div {
   background-color: rgba(0, 0, 0, 0);
   z-index: 1;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .row-link-divider img {
   width: 100%;
@@ -246,6 +248,6 @@
     margin-top: calc(15/76*100vw - 9465px/19);
   }
 }
-#content {
-  background-color:#064273
+#content:has(#homepage-content) {
+  background-color:#064273;
 }
