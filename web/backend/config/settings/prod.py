@@ -187,6 +187,7 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_HOST_PORT = int(os.getenv('EMAIL_HOST_PORT'))
 EMAIL_PORT = int(os.getenv('EMAIL_PORT'))
 EMAIL_USE_TLS = bool(os.getenv('EMAIL_USE_TLS'))
+SERVER_EMAIL = os.getenv('SERVER_EMAIL')
 DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
 NOTIFY_EMAIL = os.getenv('NOTIFY_EMAIL')
 ADMINS = (
@@ -196,21 +197,19 @@ MANAGERS = ADMINS
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
-
     'handlers': {
         'mail_admins': {
             'level': 'ERROR',
-            'class': 'django.utils.log.AdminEmailHandler'
+            'class': 'django.utils.log.AdminEmailHandler',
+            'filters': ['require_debug_false'],
         },
-
     },
     'loggers': {
         'django.request': {
             'handlers': ['mail_admins'],
             'level': 'ERROR',
-            'propagate': False,
+            'propagate': True,
         },
-
     }
 }
 
