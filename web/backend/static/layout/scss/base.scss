@@ -256,3 +256,13 @@ blockquote {
   border-left: 3px solid #7f7f7f;
   padding: 0.5em 10px
 }
+
+body{
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#content{
+  flex: 1;
+}
