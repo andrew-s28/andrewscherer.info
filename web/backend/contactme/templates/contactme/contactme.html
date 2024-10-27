@@ -4,7 +4,7 @@
   Contact Me
 {% endblock %}
 {% block content %}
-<div class="px-3 py-5 mb-4 bg-body-tertiary banner-img-subpage" id="page_title">
+<div class="px-3 pt-5 mb-0 bg-body-tertiary banner-img-subpage" id="page_title">
   <div class="container-lg">
     <div class="row">
       <div class="col-md-12 text-center">
@@ -13,20 +13,41 @@
     </div>
   </div>
 </div>
-<div class="container-lg px-4">
-  <div class="row align-items-center justify-content-center">
-    <div class="col-12 text-center">
-      <p class="text-body-light fs-5">Please fill out the form below and I will get back to you as soon as possible.</p>
-    </div>
-    <div class="col-12">
-      <form method="post">
-        {% csrf_token %}
-        {{ form }}
-        <div class="form-actions pt-3 col-12">
-          <button class="btn btn-secondary col-12" type="submit">Send</button>
+<div class="container-fluid px-4" >
+  <div class="row align-items-center justify-content-center py-3 my-3">
+    <div class="col d-flex justify-content-center px-0" id="contact-me-emails">
+      <div class="row align-items-center justify-content-center" style="max-width: 800px;">
+        <div class="col-2 email-img">
+          <img class="bi m-0 email-img float-end img-fluid mh-50 bd-image" src="{% static 'layout/images/email-closed-dark.svg' %}" alt="Closed letter"/>
         </div>
-      </form>
+        <div class="col-10 col-sm-8 align-items-center px-0">
+          <p class="m-0 my-4 h3 text-center text-sm-end">andrew@sourcedepth.com</p>
+        </div>
+        <hr>
+        <div class="w-100"></div>
+        <div class="col-2 email-img">
+          <img class="bi m-0 email-img float-end img-fluid mh-50 bd-image" src="{% static 'layout/images/email-closed-dark.svg' %}" alt="Closed letter"/>
+        </div>
+        <div class="col-10 col-sm-8 align-items-center px-0">
+          <p class="m-0 my-4 ms-2 h3 text-center text-sm-end">scherand@oregonstate.edu</p>
+        </div>
+        <hr>
+        <div class="w-100"></div>
+        <div class="col-2 email-img">
+          <img class="bi m-0 email-img float-end img-fluid mh-50 bd-image" src="{% static 'layout/images/email-closed-dark.svg' %}" alt="Closed letter"/>
+        </div>
+        <div class="col-10 col-sm-8 align-items-center px-0">
+          <p class="m-0 my-4 ms-2 h3 text-center text-sm-end">ascherer97@gmail.com</p>
+        </div>
+      </div>
     </div>
+    <!-- <div class="col-2" id="personal-email-label">
+      <p class="m-0 ms-2 h4 text-start">[personal]</p>
+    </div> -->
+
+    <!-- <div class="col-2" id="personal-email-label">
+      <p class="m-0 ms-2 h3 text-start">[work]</p>
+    </div> -->
   </div>
 </div>
 

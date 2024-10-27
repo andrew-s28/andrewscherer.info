@@ -266,3 +266,19 @@ body{
 #content{
   flex: 1;
 }
+
+.email-img {
+  max-height: 50px;
+  max-width: 100%;
+}
+
+@media (max-width:576px) {
+  .email-img {
+    display: none;
+  }  
+}
+
+#contact-me-emails hr {
+  margin: 0;
+  width: 400px;
+}
